@@ -48,7 +48,7 @@ jobs:
         sudo ldconfig /usr/local/lib
         cd ../..
 
-      - name: Copy files to destination
+    - name: Copy files to destination
       run: |
         sudo mkdir -p /root/public
         sudo mkdir -p /home/scripts

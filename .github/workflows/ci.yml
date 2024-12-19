@@ -48,7 +48,7 @@ jobs:
         sudo ldconfig /usr/local/lib
         cd ../..
         sudo rm -rf core
-      # checking if we are in the correct directory
+    #  checking if we are in the correct directory
         ls
 
     - name: Copy files to destination
@@ -60,14 +60,14 @@ jobs:
         sudo cp scripts/uring.c /home/scripts/
         sudo cp scripts/script.ld /home/scripts/
       shell: bash
-      
-# just checking -------------------------------------------
+
+    # just checking -------------------------------------------
     - name: checking if uring.c is not altered somehow
       run: sudo echo /home/scripts/uring.c
 
     - name: checking if script.ld is not altered somehow
       run: sudo echo /home/scripts/script.ld
-# --------------------------------------------------------
+    # --------------------------------------------------------
 
     - name: Set up enviroment variables
       run: |

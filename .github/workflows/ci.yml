@@ -54,12 +54,11 @@ jobs:
         sudo cp -r public/* /root/public/
         sudo cp scripts/uring.c /home/scripts/
         sudo cp scripts/script.ld /home/scripts/
-        ls /root
       shell: bash
 
     - name: Run MetaCall Example
       run: |
-        metacallcli /root/index.js
+        sudo metacallcli /root/index.js
     - name: Wait for server to be ready
       run: |
         for i in {1..10}; do

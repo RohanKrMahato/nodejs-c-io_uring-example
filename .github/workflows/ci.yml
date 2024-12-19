@@ -48,7 +48,8 @@ jobs:
         sudo ldconfig /usr/local/lib
         cd ../..
         sudo rm -rf core
-        ls
+        ls #--------------------------just_checking_if_we_are_in_the_correct_folder
+
 
     - name: Copy files to destination
       run: |
@@ -66,10 +67,11 @@ jobs:
     - name: checking if script.ld is not altered somehow
       run: sudo cat /home/scripts/script.ld
 
-    - name: Run MetaCall Example
+    - name: Set path & Run MetaCall Example
       run: |
         export LOADER_LIBRARY_PATH=/usr/local/lib
         export LOADER_SCRIPT_PATH=/home/scripts
+        env #----------------------------------------just_checking_if_enviroment_path_is_set_correctly
         sudo metacallcli /root/index.js
 
     - name: Wait for server to be ready

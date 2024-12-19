@@ -48,12 +48,16 @@ jobs:
         sudo ldconfig /usr/local/lib
         cd ../..
 
-    - name: Copy Source Files
+      - name: Copy files to destination
       run: |
+        sudo mkdir -p /root/public
+        sudo mkdir -p /home/scripts
         sudo cp index.js /root/
-        sudo cp -r public /root/public
+        sudo cp -r public/* /root/public/
         sudo cp scripts/uring.c /home/scripts/
         sudo cp scripts/script.ld /home/scripts/
+      shell: bash
+    
 
     - name: Run MetaCall Example
       run: |

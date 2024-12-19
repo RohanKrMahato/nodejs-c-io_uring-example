@@ -27,7 +27,6 @@ jobs:
           liburing-dev \
           cmake \
           curl
-
     - name: Clone and Build MetaCall
       run: |
         git clone --branch v0.8.7 https://github.com/metacall/core
@@ -47,7 +46,6 @@ jobs:
         sudo cmake --build . --target install
         sudo ldconfig /usr/local/lib
         cd ../..
-
     - name: Copy files to destination
       run: |
         sudo mkdir -p /root/public
@@ -56,13 +54,12 @@ jobs:
         sudo cp -r public/* /root/public/
         sudo cp scripts/uring.c /home/scripts/
         sudo cp scripts/script.ld /home/scripts/
+        ls /root
       shell: bash
-    
 
     - name: Run MetaCall Example
       run: |
         metacallcli /root/index.js
-
     - name: Wait for server to be ready
       run: |
         for i in {1..10}; do
@@ -87,3 +84,8 @@ jobs:
           exit 1
         fi
       shell: bash
+
+    - name: Test Docker Build
+      run: |
+        docker build -t metacall/nodejs-c-liburing-example .
+        docker run --rm -p 8000:8000 metacall/nodejs-c-liburing-example

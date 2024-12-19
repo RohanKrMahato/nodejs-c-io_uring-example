@@ -71,7 +71,8 @@ jobs:
       run: |
         export LOADER_LIBRARY_PATH=/usr/local/lib
         export LOADER_SCRIPT_PATH=/home/scripts
-        env #----------------------------------------just_checking_if_enviroment_path_is_set_correctly
+        env | grep LOADER_LIBRARY_PATH #----------------------------------------just_checking_if_enviroment_path_is_set_correctly
+        env | grep LOADER_SCRIPT_PATH
         sudo metacallcli /root/index.js
 
     - name: Wait for server to be ready

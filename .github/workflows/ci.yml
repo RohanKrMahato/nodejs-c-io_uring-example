@@ -26,7 +26,6 @@ jobs:
           git \
           liburing-dev \
           cmake \
-          build-essential \
           curl
 
     - name: Clone and Build MetaCall

@@ -61,19 +61,15 @@ jobs:
       shell: bash
 
     - name: checking if uring.c is not altered somehow
-      run: sudo echo /home/scripts/uring.c
+      run: sudo cat /home/scripts/uring.c
 
     - name: checking if script.ld is not altered somehow
-      run: sudo echo /home/scripts/script.ld
+      run: sudo cat /home/scripts/script.ld
 
-    - name: Set up enviroment variables
+    - name: Run MetaCall Example
       run: |
         export LOADER_LIBRARY_PATH=/usr/local/lib
         export LOADER_SCRIPT_PATH=/home/scripts
-        
-    - name: Run MetaCall Example
-      run: |
-        env
         sudo metacallcli /root/index.js
 
     - name: Wait for server to be ready

@@ -70,7 +70,7 @@ jobs:
       run: |
         export LOADER_LIBRARY_PATH=/usr/local/lib
         export LOADER_SCRIPT_PATH=/home/scripts
-
+        
     - name: Run MetaCall Example
       run: |
         env

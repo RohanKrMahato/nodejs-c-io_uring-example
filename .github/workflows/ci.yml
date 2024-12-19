@@ -74,7 +74,6 @@ jobs:
     - name: Run MetaCall Example
       run: |
         env
-      # checking if path is set
         sudo metacallcli /root/index.js
 
     - name: Wait for server to be ready

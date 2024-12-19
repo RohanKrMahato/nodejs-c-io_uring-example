@@ -27,6 +27,7 @@ jobs:
           liburing-dev \
           cmake \
           curl
+
     - name: Clone and Build MetaCall
       run: |
         git clone --branch v0.8.7 https://github.com/metacall/core
@@ -46,6 +47,9 @@ jobs:
         sudo cmake --build . --target install
         sudo ldconfig /usr/local/lib
         cd ../..
+        rm -rf core
+        ls
+
     - name: Copy files to destination
       run: |
         sudo mkdir -p /root/public
@@ -56,9 +60,15 @@ jobs:
         sudo cp scripts/script.ld /home/scripts/
       shell: bash
 
+    - name: Set up enviroment variables
+      run: |
+        export LOADER_LIBRARY_PATH=/usr/local/lib
+        export LOADER_SCRIPT_PATH=/home/scripts
+
     - name: Run MetaCall Example
       run: |
         sudo metacallcli /root/index.js
+        
     - name: Wait for server to be ready
       run: |
         for i in {1..10}; do

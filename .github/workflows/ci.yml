@@ -47,7 +47,7 @@ jobs:
         sudo cmake --build . --target install
         sudo ldconfig /usr/local/lib
         cd ../..
-        rm -rf core
+        sudo rm -rf core
         ls
 
     - name: Copy files to destination
@@ -68,7 +68,7 @@ jobs:
     - name: Run MetaCall Example
       run: |
         sudo metacallcli /root/index.js
-        
+
     - name: Wait for server to be ready
       run: |
         for i in {1..10}; do

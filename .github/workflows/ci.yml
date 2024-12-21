@@ -50,24 +50,11 @@ jobs:
         sudo rm -rf core
         ls #--------------------------just_checking_if_we_are_in_the_correct_folder
 
-
-    - name: Copy files to destination
-      run: |
-        sudo mkdir -p /root/public
-        sudo mkdir -p /home/scripts
-        sudo cp index.js /root/
-        sudo cp -r public/* /root/public/
-        sudo cp scripts/uring.c /home/scripts/
-        sudo cp scripts/script.ld /home/scripts/
-      shell: bash
-
     - name: Set path & Run MetaCall Example
       run: |
         export LOADER_LIBRARY_PATH="/usr/local/lib"
-        export LOADER_SCRIPT_PATH="/home/scripts"
-        env | grep LOADER_LIBRARY_PATH #----------------------------------------just_checking_if_enviroment_path_is_set_correctly
-        env | grep LOADER_SCRIPT_PATH
-        sudo metacallcli /root/index.js
+        export LOADER_SCRIPT_PATH="/home/runner/work/nodejs-c-io_uring-example/nodejs-c-io_uring-example/scripts"
+        metacallcli index.js
 
     - name: Wait for server to be ready
       run: |

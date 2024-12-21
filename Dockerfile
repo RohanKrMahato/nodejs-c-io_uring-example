@@ -62,9 +62,12 @@ COPY public /root/public
 COPY scripts/uring.c scripts/script.ld /home/scripts/
 
 # Set up enviroment variables
-ENV LOADER_LIBRARY_PATH="/usr/local/lib" \
-	LOADER_SCRIPT_PATH="/home/scripts"
+ENV LOADER_LIBRARY_PATH=/usr/local/lib \
+	LOADER_SCRIPT_PATH=/home/scripts
 
-# CMD [ "metacallcli", "/root/index.js" ]
+EXPOSE 8000
 
-RUN pwd && ls -alh /root
+HEALTHCHECK --interval=10s --timeout=3s \
+	CMD wget --no-verbose --tries=1 --spider http://localhost:8000/ || exit 1
+
+CMD [ "metacallcli", "/root/index.js" ]

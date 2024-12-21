@@ -48,13 +48,12 @@ jobs:
         sudo ldconfig /usr/local/lib
         cd ../..
         sudo rm -rf core
-        ls #--------------------------just_checking_if_we_are_in_the_correct_folder
-
+        
     - name: Set path & Run MetaCall Example
       run: |
         export LOADER_LIBRARY_PATH="/usr/local/lib"
-        export LOADER_SCRIPT_PATH="/home/runner/work/nodejs-c-io_uring-example/nodejs-c-io_uring-example/scripts"
-        nohup metacallcli index.js &
+        export LOADER_SCRIPT_PATH="/home/runner/work/nodejs-c-io_uring-example/nodejs-c-io_uring-example/scripts" # path of the scripts
+        nohup metacallcli index.js & # running the server in the background
         echo $! > metacall_pid.txt  # Save the PID of the process to a file
         
     - name: Wait for server to be ready
@@ -82,7 +81,7 @@ jobs:
         fi
       shell: bash
 
-    - name: Kill MetaCall process
+    - name: Kill MetaCall process (free port 8000)
       run: |
         if [ -f metacall_pid.txt ]; then
           PID=$(cat metacall_pid.txt)

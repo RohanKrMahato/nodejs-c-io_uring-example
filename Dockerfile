@@ -66,3 +66,5 @@ ENV LOADER_LIBRARY_PATH="/usr/local/lib" \
 	LOADER_SCRIPT_PATH="/home/scripts"
 
 # CMD [ "metacallcli", "/root/index.js" ]
+
+RUN pwd && ls -alh /root

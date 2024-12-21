@@ -11,7 +11,7 @@ on:
       - tester
 
 jobs:
-  Linux test:
+  Linux_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -93,7 +93,7 @@ jobs:
         fi
       shell: bash
 
-  Docker test:
+  Docker_test:
     runs-on: ubuntu-latest
 
     steps:

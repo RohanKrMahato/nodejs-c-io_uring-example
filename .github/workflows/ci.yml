@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+      - tester
   pull_request:
     branches:
       - master
+      - tester
 
 jobs:
   Linux test:

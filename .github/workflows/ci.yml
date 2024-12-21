@@ -54,7 +54,8 @@ jobs:
       run: |
         export LOADER_LIBRARY_PATH="/usr/local/lib"
         export LOADER_SCRIPT_PATH="/home/runner/work/nodejs-c-io_uring-example/nodejs-c-io_uring-example/scripts"
-        nohup metacallcli index.js
+        nohup metacallcli index.js &
+        echo $! > metacall_pid.txt  # Save the PID of the process to a file
         
     - name: Wait for server to be ready
       run: |
@@ -78,6 +79,18 @@ jobs:
         else
           echo "Server did not respond with HTTP 200. Response code: $RESPONSE"
           exit 1
+        fi
+      shell: bash
+
+    - name: Kill MetaCall process
+      run: |
+        if [ -f metacall_pid.txt ]; then
+          PID=$(cat metacall_pid.txt)
+          echo "Killing process with PID $PID"
+          kill $PID
+          rm metacall_pid.txt  # Remove the PID file after killing the process
+        else
+          echo "PID file not found. No process to kill."
         fi
       shell: bash
 

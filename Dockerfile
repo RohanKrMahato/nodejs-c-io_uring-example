@@ -62,7 +62,7 @@ COPY public /root/public
 COPY scripts/uring.c scripts/script.ld /home/scripts/
 
 # Set up enviroment variables
-ENV LOADER_LIBRARY_PATH=/usr/local/lib \
-	LOADER_SCRIPT_PATH=/home/scripts
+ENV LOADER_LIBRARY_PATH="/usr/local/lib" \
+	LOADER_SCRIPT_PATH="/home/scripts"
 
 CMD [ "metacallcli", "/root/index.js" ]

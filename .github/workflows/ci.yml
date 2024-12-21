@@ -1,17 +1,15 @@
-name: CI Linux Build and Test
+name: CI for nodejs-c-io_uring-example
 
 on:
   push:
     branches:
       - master
-      - tester
   pull_request:
     branches:
       - master
-      - tester
 
 jobs:
-  build-and-test:
+  Linux test:
     runs-on: ubuntu-latest
 
     steps:
@@ -92,6 +90,13 @@ jobs:
           echo "PID file not found. No process to kill."
         fi
       shell: bash
+
+  Docker test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
     - name: Test Docker Build
       run: |

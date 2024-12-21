@@ -54,7 +54,7 @@ jobs:
       run: |
         export LOADER_LIBRARY_PATH="/usr/local/lib"
         export LOADER_SCRIPT_PATH="/home/runner/work/nodejs-c-io_uring-example/nodejs-c-io_uring-example/scripts"
-        nohup metacallcli index.js &
+        metacallcli index.js &
         
     - name: Wait for server to be ready
       run: |

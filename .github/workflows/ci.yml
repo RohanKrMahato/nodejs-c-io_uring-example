@@ -1,17 +1,14 @@
-name: CI for nodejs-c-io_uring-example
+name: CI
 
 on:
-  push:
-    branches:
-      - master
-      - tester
   pull_request:
+  push:
     branches:
       - master
       - tester
 
 jobs:
-  Linux_test:
+  linux:
     runs-on: ubuntu-latest
 
     steps:
@@ -91,7 +88,6 @@ jobs:
         else
           echo "PID file not found. No process to kill."
         fi
-      shell: bash
 
   Docker_test:
     runs-on: ubuntu-latest
